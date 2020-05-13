@@ -9,6 +9,7 @@ verify_ssl = true
 python-dotenv = {index = "nary",version = "*"}
 psycopg2-binary = {index = "nary",version = "*"}
 pandas = "*"
+sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"
