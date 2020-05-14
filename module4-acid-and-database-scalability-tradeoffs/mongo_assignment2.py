@@ -132,14 +132,48 @@ print("The average # of parents/children for survivors was", round(average(survi
 print("The average # of parents/children for non-survivors was", round(average(perished, 'parent_children'), 2))
 
 
-# print(" ")
-# print("--------------------------")
-# print("Q9: Do any passengers have the same name?")
-# query = "SELECT AVG(survived) FROM titanic_table"
-# cur.execute(query)
-# result = cur.fetchall()
-# print(format(result[0][0], ".2%"), "of passengers survived")
-# print("--------------------------")
+print(" ")
+print("--------------------------")
+print("Q9: Do any passengers have the same name?")
+everyone = list(titanic_table.test.find({'survived': 1, 'survived': 0}))
+everyone10 = everyone[:10]
+
+def name_match(list2):
+    names1 = []
+    names = []
+    non_unique = []
+    all_names = []
+    very_non_unique =[]
+
+    # Start by making a cleaned up nested list of all names
+    for i in list2:
+        name = i['name']
+        name = name.lower()
+        name = name.replace('(','').replace(')','').replace('.','')
+        name = str.split(name)
+        names.append(name)
+
+    # Then make a non-nested list taking out mr mrs etc
+    for n in names:
+        for i in n:
+            if i not in ['mrs', 'mr','miss', 'master', 'j', 'a', 'rev', 'van', 'h', 'jr', 'dr', 'o', 'de', 'd']:
+                names1.append(i)
+
+    # Then find the unique ones
+    for n in names1:
+        if n not in all_names:
+            all_names.append(n)
+        elif n not in non_unique:
+            non_unique.append(n)
+        else:
+            very_non_unique.append(n)
+
+    
+    print(len(non_unique), "names appear at least twice, including:")
+    print(non_unique)
+
+print(name_match(everyone))
+print("--------------------------")
 
 # print(" ")
 # print("--------------------------")
@@ -147,10 +181,6 @@ print("The average # of parents/children for non-survivors was", round(average(p
 # # (Bonus! Hard, may require pulling and processing with Python) 
 # # Assume that two people (one Mr. and one Mrs.) with the same last name and 
 # # with at least 1 sibling/spouse aboard are a married couple.
-# query = "SELECT AVG(survived) FROM titanic_table"
-# cur.execute(query)
-# result = cur.fetchall()
-# print(format(result[0][0], ".2%"), "of passengers survived")
 # print("--------------------------")
 
 print(" ")
