@@ -73,9 +73,3 @@ for passenger in titanic_df:
     VALUES{passenger}; """
     cur.execute(insert_passenger)
 conn.commit()
-
-#This is not working. It works in TablePlus but not here
-query = "SELECT count(index_label) FROM titanic_table"
-result = cur.execute(query).fetchall()
-print("This database should have 887 rows.")
-print("This database has", result[0][0], "rows!")
