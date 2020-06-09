@@ -15,9 +15,6 @@ conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER,
                         password=DB_PW, host=DB_HOST)
 cur = conn.cursor()
 
-query = "SELECT count(index_label) FROM titanic_table"
-cur.execute(query)
-result = cur.fetchall()
 print(" ")
 print("--------------------------")
 print("Titanic Report Assignment")

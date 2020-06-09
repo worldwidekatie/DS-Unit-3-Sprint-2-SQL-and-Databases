@@ -14,7 +14,7 @@ import pandas as pd
 import sqlite3
 from sqlalchemy import create_engine
 
-load_dotenv()
+load_dotenv() #installs stuff from the env enviornment
 
  # Connect to the PostgresSQL database
 DB_NAME=os.getenv('DB_NAME', default='OOPS')

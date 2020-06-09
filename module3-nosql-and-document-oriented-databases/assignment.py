@@ -26,7 +26,7 @@ CLUSTER_NAME = os.getenv("MONGO_CLUSTER_NAME", default="OOPS")
 
 connection_uri = f"mongodb+srv://{DB_USER}:{DB_PASSWORD}@{CLUSTER_NAME}.mongodb.net/test?retryWrites=true&w=majority"
 client = pymongo.MongoClient(connection_uri)
-rpg = client.rpg_database
+rpg_db = client.rpg_db
 
 # Connecting to sqlight3 data
 conn = sqlite3.connect('rpg_db.sqlite3')
@@ -46,9 +46,9 @@ for character in characters:
     'intelligence': character[6],
     'dexterity': character[7],
     'wisdom': character[8]}
-    rpg.test.insert_one(character_)
+    rpg_db.test.insert_one(character_)
 
 # Checking to see if the first two went in properly
-print(rpg.test.count_documents({'character_id': 1, 'name': 'Aliquid iste optio reiciendi', 'level': 0, 'exp': 0, 'hp': 10, 'strength': 1, 'intelligence': 1, 'dexterity': 1, 'wisdom': 1}))
-print(rpg.test.count_documents({'character_id': 2, 'name': 'Optio dolorem ex a', 'level': 0, 'exp': 0, 'hp': 10, 'strength': 1, 'intelligence': 1, 'dexterity': 1, 'wisdom': 1}))
+print(rpg_db.test.count_documents({'character_id': 1, 'name': 'Aliquid iste optio reiciendi', 'level': 0, 'exp': 0, 'hp': 10, 'strength': 1, 'intelligence': 1, 'dexterity': 1, 'wisdom': 1}))
+print(rpg_db.test.count_documents({'character_id': 2, 'name': 'Optio dolorem ex a', 'level': 0, 'exp': 0, 'hp': 10, 'strength': 1, 'intelligence': 1, 'dexterity': 1, 'wisdom': 1}))
 

@@ -51,8 +51,8 @@ sl_conn = sqlite3.connect('rpg_db.sqlite3')
 sl_curs = sl_conn.cursor()
 
 #Checking if my row count is correct (302)
-row_count = 'SELECT COUNT(*) FROM charactercreator_character'
-print(sl_curs.execute(row_count).fetchall())
+#row_count = 'SELECT COUNT(*) FROM charactercreator_character'
+#print(sl_curs.execute(row_count).fetchall())
 
 # GOAL: copy the characters table from SQLite to PostgreSQL using python
 # STEP 1 - E=Extract: Get the Characters
